@@ -12,6 +12,7 @@ import {
   useColorModeValue,
   Image,
   VisuallyHidden,
+  Tag,
 } from "@chakra-ui/react";
 
 import { FaTwitter } from "react-icons/fa";
@@ -20,6 +21,7 @@ import { FaYoutube } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 import img from "../../assets/everhourLogo.jpeg";
+import StatusIndicator from "./StatusIndicator";
 
 const SocialButton = ({
   children,
@@ -62,7 +64,6 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
   );
 };
 
-
 const Footer = () => {
   return (
     <>
@@ -71,7 +72,7 @@ const Footer = () => {
         bg={useColorModeValue("#151616", "#151616")}
         mt={{ base: "18rem", md: "10rem", lg: "0rem" }}
         color={"white"}
-        fontSize={{ base: "0.4rem", md: "0.75rem", lg: "0.95rem" }}
+        fontSize={{ base: "1rem", md: "0.75rem", lg: "0.95rem" }}
       >
         <Container
           as={Stack}
@@ -80,9 +81,9 @@ const Footer = () => {
           fontFamily="geomanist-regular',sans-serif"
           pt={"50px"}
         >
-          <Flex direction="row" justifyContent="space-evenly">
+          <Flex  direction={{ base: "column", md: "row" }} justifyContent="space-evenly">
             <Stack>
-              <Image src={img} w="45px" h="45px" borderRadius={"50%"}/>
+              <Image src={img} w="45px" h="45px" borderRadius={"50%"} />
             </Stack>
 
             <Stack align={"flex-start"}>
@@ -98,7 +99,12 @@ const Footer = () => {
               <Link href={"#"}>Request a demo</Link>
               <Link href={"#"}>Customers</Link>
               <Link href={"#"}>API & docs</Link>
-              <Link href={"#"}>Status</Link>
+              <Link href={"#"}>
+                Status{" "}
+                <Tag h="14" w="20" bg="none">
+                  <StatusIndicator />{" "}
+                </Tag>{" "}
+              </Link>
             </Stack>
 
             <Stack align={"flex-start"}>
@@ -141,20 +147,21 @@ const Footer = () => {
               <Link href={"#"}>Attendance tracker</Link>
               <Link href={"#"}>Work hours tracker</Link>
             </Stack>
-            
+
             <Stack align={"flex-start"}>
               <ListHeader>Download</ListHeader>
               <Link href={"#"}>Browser extension</Link>
               <Link href={"#"}>Chrome time tracking extension</Link>
               <Link href={"#"}>Time tracking with screenshots</Link>
               <Link href={"#"}>Chrome time tracking extension</Link>
-              <Link href={"#"}>iPhone app</Link>
+              <Link href={"#"}>
+                iPhone app <Tag> Beta</Tag>{" "}
+              </Link>
             </Stack>
           </Flex>
+
+
           <Box
-            borderTopWidth={1}
-            borderStyle={"solid"}
-            borderColor={useColorModeValue("gray.200", "gray.700")}
           >
             <Container
               as={Stack}
@@ -165,17 +172,17 @@ const Footer = () => {
               justify={{ base: "center", md: "space-between" }}
               align={{ base: "center", md: "center" }}
             >
-              <Text>  © 2022 Everhour Terms | Privacy | Cookies | Sitemap</Text>
+              <Text> © 2022 Everhour Terms | Privacy | Cookies | Sitemap</Text>
               <Stack direction={"row"} spacing={6}>
                 <SocialButton label={"Facebook"} href={"#"}>
-                <FaFacebook />
+                  <FaFacebook />
                 </SocialButton>
                 <SocialButton label={"Twitter"} href={"#"}>
                   <FaTwitter />
                 </SocialButton>
-               
+
                 <SocialButton label={"Linkedin"} href={"#"}>
-                <BsLinkedin />
+                  <BsLinkedin />
                 </SocialButton>
                 <SocialButton label={"YouTube"} href={"#"}>
                   <FaYoutube />
