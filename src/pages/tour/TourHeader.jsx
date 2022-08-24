@@ -30,6 +30,11 @@ const TourHeader = () => {
            <Box className="youtube">
            <ReactPlayer  controls url="https://youtu.be/jSoBagh6eIs"/>
            </Box> 
+           <Stack>
+            <Box></Box>
+            <Box></Box>
+            <Box></Box>
+           </Stack>
 
         </Box>
       
