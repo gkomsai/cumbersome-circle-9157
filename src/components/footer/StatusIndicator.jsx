@@ -1,9 +1,9 @@
-import { Box, Flex, keyframes, Tooltip } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Flex, keyframes, Tooltip } from "@chakra-ui/react";
+import React from "react";
 
 export default function StatusIndicator() {
-  const activeColor = 'green.500';
-  const inactiveColor = 'gray.400';
+  const activeColor = "green.500";
+  const inactiveColor = "gray.400";
   const ringScaleMin = 0.33;
   const ringScaleMax = 0.66;
 
@@ -45,9 +45,10 @@ export default function StatusIndicator() {
       h="76px"
       w="full"
       flexDir="column"
-      overflow="hidden">
+      overflow="hidden"
+    >
       {/* Ideally, only the box should be used. The <Flex /> is used to style the preview. */}
-      <Tooltip label={`Active`} >
+      <Tooltip label={`Active`}>
         <Box
           as="div"
           h="14px"
@@ -58,14 +59,14 @@ export default function StatusIndicator() {
           borderRadius="50%"
           _before={{
             content: "''",
-            position: 'relative',
-            display: 'block',
-            width: '300%',
-            height: '300%',
-            boxSizing: 'border-box',
-            marginLeft: '-100%',
-            marginTop: '-100%',
-            borderRadius: '50%',
+            position: "relative",
+            display: "block",
+            width: "300%",
+            height: "300%",
+            boxSizing: "border-box",
+            marginLeft: "-100%",
+            marginTop: "-100%",
+            borderRadius: "50%",
             bgColor: activeColor,
             animation: `2.25s ${pulseRing} cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite`,
           }}
@@ -74,7 +75,6 @@ export default function StatusIndicator() {
           }}
         />
       </Tooltip>
-     
     </Flex>
   );
 }

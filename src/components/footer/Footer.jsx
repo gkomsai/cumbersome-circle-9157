@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./footer.module.css";
-
 import {
   Box,
-  chakra,
   Container,
   Link,
   Stack,
@@ -11,54 +9,24 @@ import {
   Flex,
   useColorModeValue,
   Image,
-  VisuallyHidden,
   Tag,
 } from "@chakra-ui/react";
 
-import { FaTwitter } from "react-icons/fa";
+import { FaTwitter, FaYoutube, FaFacebook } from "react-icons/fa";
 import TopFooter from "./TopFooter";
-import { FaYoutube } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 import img from "../../assets/everhourLogo.jpeg";
 import StatusIndicator from "./StatusIndicator";
-
-const SocialButton = ({
-  children,
-  label,
-  href,
-}: {
-  children: ReactNode,
-  label: string,
-  href: string,
-}) => {
-  return (
-    <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-      rounded={"full"}
-      w={12}
-      h={12}
-      cursor={"pointer"}
-      as={"a"}
-      href={href}
-      display={"flex"}
-      gap="-40px"
-      alignItems={"center"}
-      justifyContent={"center"}
-      transition={"background 0.3s ease"}
-      _hover={{
-        bg: useColorModeValue("black", "white"),
-      }}
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      {children}
-    </chakra.button>
-  );
-};
+import { SocialButton } from "./SocialButtons";
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
   return (
-    <Text fontWeight={"500"} color="gray.400" fontSize={"lg"} mb={2}>
+    <Text
+      fontWeight={"500"}
+      color="gray.400"
+      fontSize={{ base: "1.5rem", md: "0.75rem", lg: "1rem" }}
+      mt={2}
+    >
       {children}
     </Text>
   );
@@ -73,15 +41,13 @@ const Footer = () => {
         mt={{ base: "18rem", md: "10rem", lg: "0rem" }}
         color={"white"}
         fontSize={{ base: "1rem", md: "0.75rem", lg: "0.95rem" }}
+        paddingLeft={{ base: "2%" }}
       >
-        <Container
-          as={Stack}
-          maxW={"100%"}
-          py={6}
-          fontFamily="geomanist-regular',sans-serif"
-          pt={"50px"}
-        >
-          <Flex  direction={{ base: "column", md: "row" }} justifyContent="space-evenly">
+        <Container as={Stack} maxW={"100%"} py={6} pt={"50px"}>
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            justifyContent="space-between"
+          >
             <Stack>
               <Image src={img} w="45px" h="45px" borderRadius={"50%"} />
             </Stack>
@@ -160,36 +126,33 @@ const Footer = () => {
             </Stack>
           </Flex>
 
-
-          <Box
+          <Container
+            as={Stack}
+            maxW={"6xl"}
+            py={4}
+            direction={{ base: "column", md: "row" }}
+            spacing={4}
+            justify={{ base: "center", md: "space-between" }}
+            align={{ base: "center", md: "center" }}
           >
-            <Container
-              as={Stack}
-              maxW={"6xl"}
-              py={4}
-              direction={{ base: "column", md: "row" }}
-              spacing={4}
-              justify={{ base: "center", md: "space-between" }}
-              align={{ base: "center", md: "center" }}
-            >
-              <Text> © 2022 Everhour Terms | Privacy | Cookies | Sitemap</Text>
-              <Stack direction={"row"} spacing={6}>
-                <SocialButton label={"Facebook"} href={"#"}>
-                  <FaFacebook />
-                </SocialButton>
-                <SocialButton label={"Twitter"} href={"#"}>
-                  <FaTwitter />
-                </SocialButton>
+            <Text> © 2022 Everhour Terms | Privacy | Cookies | Sitemap</Text>
+            
+            <Stack direction={"row"} spacing={6}>
+              <SocialButton label={"Facebook"} href={"#"}>
+                <FaFacebook />
+              </SocialButton>
+              <SocialButton label={"Twitter"} href={"#"}>
+                <FaTwitter />
+              </SocialButton>
 
-                <SocialButton label={"Linkedin"} href={"#"}>
-                  <BsLinkedin />
-                </SocialButton>
-                <SocialButton label={"YouTube"} href={"#"}>
-                  <FaYoutube />
-                </SocialButton>
-              </Stack>
-            </Container>
-          </Box>
+              <SocialButton label={"Linkedin"} href={"#"}>
+                <BsLinkedin />
+              </SocialButton>
+              <SocialButton label={"YouTube"} href={"#"}>
+                <FaYoutube />
+              </SocialButton>
+            </Stack>
+          </Container>
         </Container>
       </Box>
     </>
