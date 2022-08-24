@@ -8,7 +8,7 @@ const TourHeader = () => {
   return (
     <Box>
     <Box marginLeft='5rem'>
-        <Stack direction="row" border='1px solid'>
+        <Stack direction="row">
             <Box w='40%'>
                 <Box w='80%' marginTop='2rem'><Text fontWeight='500' fontSize='5xl'>Everything your team needs to run more profitable projects</Text>
                 <Stack direction='row'>
