@@ -1,7 +1,7 @@
 import React from 'react'
 import {Box, Button, Image, Input, Spacer, Stack,Text} from "@chakra-ui/react"
 import ReactPlayer from 'react-player'
-import styles from "./tour.module.css";
+import "./tour.css";
 
 
 const TourHeader = () => {
@@ -26,7 +26,10 @@ const TourHeader = () => {
         <Box m="0 5rem 0 5rem">
             <Text fontSize="3xl" fontWeight='500'>Time management</Text>
             <Text fontSize='2xl'>Track time spent on projects, hours of work, vacations or sick days</Text>
-            <ReactPlayer classname="youtube" controls url="https://youtu.be/jSoBagh6eIs"/>
+           
+           <Box className="youtube">
+           <ReactPlayer  controls url="https://youtu.be/jSoBagh6eIs"/>
+           </Box> 
 
         </Box>
       
