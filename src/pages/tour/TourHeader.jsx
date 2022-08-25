@@ -47,6 +47,22 @@ const TourHeader = () => {
                 <Text fontSize='2xl' fontWeight="500">Reminders</Text>
                 <Text color="gray">Receive notifications about long-running timers and reminders to track time.</Text>
             </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='2xl' fontWeight="500">Reminders</Text>
+                <Text color="gray">Receive notifications about long-running timers and reminders to track time.</Text>
+            </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='2xl' fontWeight="500">Reminders</Text>
+                <Text color="gray">Receive notifications about long-running timers and reminders to track time.</Text>
+            </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='2xl' fontWeight="500">Reminders</Text>
+                <Text color="gray">Receive notifications about long-running timers and reminders to track time.</Text>
+            </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='2xl' fontWeight="500">Reminders</Text>
+                <Text color="gray">Receive notifications about long-running timers and reminders to track time.</Text>
+            </GridItem>
             
            </Grid>
 
