@@ -28,17 +28,26 @@ const TourHeader = () => {
            <ReactPlayer width='74rem' height="50rem" controls url="https://youtu.be/jSoBagh6eIs"/>
            <Grid templateRows="repeat(3,1fr)" templateColumns="repeat(3,1fr)">
             <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
-                <Text fontSize='4xl'>Seemless integrations</Text>
-                <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
+                <Text fontSize='2xl' fontWeight="500">Seemless integrations</Text>
+                <Text color="gray">Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
             </GridItem>
             <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
-                <Text fontSize='4xl'>Seemless integrations</Text>
-                <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
+                <Text fontSize='2xl' fontWeight="500">Timer or manual entry</Text>
+                <Text color="gray">Start and stop your timer to record activities as you work. Or log hours manually afterwards.</Text>
             </GridItem>
             <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
-                <Text fontSize='4xl'>Seemless integrations</Text>
-                <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
+                <Text fontSize='2xl' fontWeight="500">Clock-in, clock-out</Text>
+                <Text color="gray">Know the time spent on projects as well as hours of work and breaks</Text>
             </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='2xl' fontWeight="500">Estimates</Text>
+                <Text color="gray">Set time estimates so at any time you can see the time you spend and what is left</Text>
+            </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='2xl' fontWeight="500">Reminders</Text>
+                <Text color="gray">Receive notifications about long-running timers and reminders to track time.</Text>
+            </GridItem>
+            
            </Grid>
 
         </Box>
