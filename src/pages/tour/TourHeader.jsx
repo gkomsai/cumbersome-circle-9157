@@ -1,7 +1,6 @@
 import React from 'react'
 import {Box, Button, Grid, GridItem, Image, Input, Spacer, Stack,Text} from "@chakra-ui/react"
 import ReactPlayer from 'react-player'
-import "./tour.css";
 
 
 const TourHeader = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from "./tour.css";
+import styles from "./tour.module.css";
 import TourHeader from './TourHeader';
 
 const Tour = () => {
