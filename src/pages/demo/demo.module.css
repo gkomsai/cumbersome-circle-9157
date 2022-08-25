@@ -1,1 +1,21 @@
 /* write css code here */
+
+.samimg {
+    background-image: url("https://blog-cdn.everhour.com/assets/images/new-design/background-elements/oval-dotted-orange-and-solid-green-combined.jpg");
+  }
+  .sbox:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .links {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  .schedule:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #57bb71 ;
+    /* background-color: red; */
+  }
+  
+
+  
