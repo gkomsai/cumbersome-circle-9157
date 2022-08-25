@@ -26,8 +26,16 @@ const TourHeader = () => {
             <Text fontSize="4xl" fontWeight='500'>Time management</Text>
             <Text fontSize='xl' color='gray'>Track time spent on projects, hours of work, vacations or sick days</Text>
            <ReactPlayer width='74rem' height="50rem" controls url="https://youtu.be/jSoBagh6eIs"/>
-           <Grid>
-            <GridItem>
+           <Grid templateRows="repeat(3,1fr)" templateColumns="repeat(3,1fr)">
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='4xl'>Seemless integrations</Text>
+                <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
+            </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
+                <Text fontSize='4xl'>Seemless integrations</Text>
+                <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
+            </GridItem>
+            <GridItem borderBottom='1px solid gray' margin='1rem 1rem 1rem 1rem'>
                 <Text fontSize='4xl'>Seemless integrations</Text>
                 <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
             </GridItem>
