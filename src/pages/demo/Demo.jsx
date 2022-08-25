@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Button, color } from "@chakra-ui/react";
+import { Box, Heading, Button} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import styles from "../demo/demo.module.css";
