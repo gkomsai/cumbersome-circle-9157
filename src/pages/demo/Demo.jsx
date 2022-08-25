@@ -125,7 +125,29 @@ const Demo=()=>{
 
       {/* // --------------------------------------------------------------------- */}
 
+<Box style={{justifyContent:"center", marginTop:"-10rem" }}>
 
+<h2 style={{fontSize:"35px" , color:"#333333", fontWeight:"bold", fontFamily:"sans-serif"}}> 
+Skip the demo and try for yourself?
+</h2>
+  <h3 style={{fontSize:"20px" , color:"#767676",  }}>
+  Try Everhour for free to see if it works for your business.<br/>
+  No credit card required. No obligations.
+  </h3>
+
+    <input style={{ width: "370px" , height:"48px", border:"1px solid black" , borderRadius:"5px", marginTop:"20px", padding:"20px"}} 
+    placeholder="Working email..."  />     
+    <button style={{minWidth:"152px", backgroundColor:"#57bb71", height:"3.2rem", borderRadius:"5px", marginLeft:"1rem" , fontWeight:"normal",color:"white"}}>Try it free</button>
+   
+
+
+  <span width="10px">
+  <FcGoogle style={{marginLeft:"33rem", marginTop:"1rem"}} />
+  </span> 
+   <p style={{marginTop:"-1.2rem"}}> Or sign up with Google Account</p>
+</Box>
+<br/>
+<br/>
 
    </div>
 
