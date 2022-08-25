@@ -1,1 +1,11 @@
 /* write css code here */
+.dotlist {
+    font-size: 1.125rem;
+    line-height: 2;
+    color: #333;
+
+  }
+ 
+  .dotlist > li {
+    float: left;
+  }
