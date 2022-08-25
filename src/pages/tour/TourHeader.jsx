@@ -24,12 +24,9 @@ const TourHeader = () => {
         </Stack>
         </Box>
         <Box m="0 5rem 0 5rem">
-            <Text fontSize="3xl" fontWeight='500'>Time management</Text>
-            <Text fontSize='2xl'>Track time spent on projects, hours of work, vacations or sick days</Text>
-           
-           <Box className="youtube">
-           <ReactPlayer  controls url="https://youtu.be/jSoBagh6eIs"/>
-           </Box> 
+            <Text fontSize="4xl" fontWeight='500'>Time management</Text>
+            <Text fontSize='xl' color='gray'>Track time spent on projects, hours of work, vacations or sick days</Text>
+           <ReactPlayer width='74rem' height="50rem" controls url="https://youtu.be/jSoBagh6eIs"/>
            <Grid>
             <GridItem>
                 <Text fontSize='4xl'>Seemless integrations</Text>
