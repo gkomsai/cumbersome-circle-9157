@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Button, Grid, Image, Input, Spacer, Stack,Text} from "@chakra-ui/react"
+import {Box, Button, Grid, GridItem, Image, Input, Spacer, Stack,Text} from "@chakra-ui/react"
 import ReactPlayer from 'react-player'
 import "./tour.css";
 
@@ -31,9 +31,10 @@ const TourHeader = () => {
            <ReactPlayer  controls url="https://youtu.be/jSoBagh6eIs"/>
            </Box> 
            <Grid>
-            <Box></Box>
-            <Box></Box>
-            <Box></Box>
+            <GridItem>
+                <Text fontSize='4xl'>Seemless integrations</Text>
+                <Text>Track time right inside the most popular apps, such as Asana, Basecamp, Jira, Trello, GitHub, ClickUp and more.</Text>
+            </GridItem>
            </Grid>
 
         </Box>
