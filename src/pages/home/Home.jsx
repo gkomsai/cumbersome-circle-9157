@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react'
+import BottomSection from './carouselSection/BottomSection';
 import Carousel from './carouselSection/carousel';
 import TopSection from './carouselSection/TopSection';
 
@@ -12,6 +13,7 @@ const Home = () => {
     <Box>
       <TopSection />
       <Carousel />
+      <BottomSection / >
     </Box>
   )
 }
