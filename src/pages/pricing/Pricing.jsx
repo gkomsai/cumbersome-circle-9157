@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Switch,Box,Heading} from "@chakra-ui/react";
-import {Stack,Text,}from "@chakra-ui/react";
+import { Switch,Heading} from "@chakra-ui/react";
 import "./pricing.css";
+import {Box,Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,Stack,Text,} from "@chakra-ui/react";
 
 
 const Pricing = () => {
@@ -105,15 +105,162 @@ const Pricing = () => {
                 <div className="tryforfree">  {" "}                
                   <button>Try free</button>
                 </div>
-              </Box>
+              </Box>        
             )}
           </div>
+{/*------ -----------------------------------bottom part--------------------- */}
+            <Box style={{ marginTop:"2rem" , marginBottom:"8rem"}}>
+              <span>
+                Currency
+                <select>
+                  <option>INR</option>                        
+                  <option>EUR</option>
+                  <option>GBP</option>
+                  <option>AUD</option>
+                  <option>CAD</option>
+                  <option>ZIM</option>       
+              </select>
+              </span>
+              </Box>       
+       
+          <Box className="faq">
 
-          
+            <Box  style={{ width:"45%"}}>
+              <h2 style={{fontSize:"36px", fontWeight:"bold"}}>Your questions. Answered!</h2>
+              <div className="pagesubtitle">
+                <h3>
+                  Here is a list of the most frequently asked questions. Got
+                  others or some ideas? — <a href="/#">Contact us!</a>
+                </h3>
+               
+                  <img style={{width:"100%"}}
+                    src="https://blog-cdn.everhour.com/assets/images/new-design/illustrations/primary-illustrations/faq@2x.webp"
+                    alt="faq illustration"></img>             
 
-     
-    </Box>
-  );
+              </div>
+            </Box>
+            {/* -------------------img----------------- */}
+
+            <Box style={{width:"50%"}}>
+              <Accordion allowToggle>
+              <AccordionItem borderTop={"none"}>
+              <h2>
+              <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+              <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+              What's the trial period purpose? </Box>
+                     
+              <AccordionIcon />
+              </AccordionButton>
+              </h2>
+              <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    When you sign up, you get a fully-functional account for 2
+                    weeks, which gives you access to everything Everhour has to
+                    offer. After 14 days, you will need to pick a plan and enter
+                    your credit card details. We’ll email you a couple of days
+                    before your trial expires to remind you.
+                  </AccordionPanel>
+                </AccordionItem>
+                <AccordionItem>
+                  <h2>
+                  <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+                  <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+                  Can I change my plan later? </Box>
+                 <AccordionIcon />
+                </AccordionButton>
+
+                  </h2>
+                  <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    Yes, you can upgrade/downgrade your plan at any time. You
+                    will be credited for the remainder of your current plan and
+                    charged for your new plan when you upgrade.
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                  <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+                  <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+                    Can I add or remove members at any time?
+                  </Box>
+                  <AccordionIcon />
+                  </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    Absolutely! Everhour is pay-as-you-go, and you can easily
+                    add or remove members from your account with a couple of
+                    clicks.
+                  </AccordionPanel>
+                </AccordionItem>
+                <AccordionItem>
+                  <h2>
+                  <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+                  <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+                        What if I want to cancel my service?
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    No problem. If you decide Everhour isn’t for you (or you
+                    just need to pause), simply cancel before your next billing
+                    period. This date is listed on your billing page.
+                    Unfortunately, we can’t refund you for partial use or the
+                    amount of time left in your subscription.
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                  <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+                  <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+                      What kind of payment methods do you accept?
+                  </Box>
+                  <AccordionIcon />
+                  </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    We currently accept any credit or debit card with a
+                    MasterCard, Visa, Discover Network, American Express, Diners
+                    Club International or JCB logo.
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                  <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+                  <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+                       Which currency will I be charged in?
+                  </Box>
+                  <AccordionIcon />
+                  </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    You will be charged in USD. However, our pricing page
+                    displays the indicative price in other currencies based on
+                    your location for your convenience.
+                  </AccordionPanel>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <h2>
+                  <AccordionButton padding="20px 32px 20px 10px"fontWeight='medium' >
+                  <Box flex="1"textAlign="left"display="flex"fontSize="18px">
+                    Can I change my plan later?
+                  </Box>
+                  <AccordionIcon />
+                  </AccordionButton>
+                  </h2>
+                  <AccordionPanel pb={5}left="0%"textAlign="left"opacity={0.8}>
+                    Yes, you can upgrade/downgrade your plan at any time. You
+                    will be credited for the remainder of your current plan and
+                    charged for your new plan when you upgrade.
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+            </Box>
+            </Box>
+          </Box>   
+   );
 };
 
 export default Pricing;
