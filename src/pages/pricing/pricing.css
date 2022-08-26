@@ -38,6 +38,35 @@
   .carditems:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
+  /* --------------------------------------------bottom part-------------------- */
+  .faq{
+    width: 1140px;
+    height: 662px;
+    display: flex;
+    /* border: 1px solid red; */
+    justify-content: center;
+    justify-content: space-between;
+    margin: auto;
+  }
+   
+  .pagesubtitle > h3 {
+    width: 400px;
+    float: left;
+    left: 0%;
+    text-align: center;  
+    margin-bottom: 33px;
+    font-size: 17px;
+  }
+  .pagesubtitle {
+    padding: 20px 5px;
+  }
+  .pagesubtitle > img {
+    margin-top: -20px;
+  }
+
+
+
+
 
 
   
