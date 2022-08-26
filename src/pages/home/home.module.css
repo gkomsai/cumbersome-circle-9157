@@ -1,1 +1,65 @@
-/* write css code here */
+.main {
+  margin-top: 1rem;
+  display: flex;
+  width: 80%;
+  height: 150px;
+  gap: 2%;
+  margin: auto;
+}
+
+.commentHeading {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.dropbox {
+  background-color: rgb(164, 233, 218);
+  width: 50px;
+  height: 50px;
+  border-radius: 50px 50px 0px 50px;
+  cursor: pointer;
+}
+
+.child2 {
+  display: flex;
+  gap: 2%;
+}
+
+.dropnumber {
+  position: absolute;
+  margin-left: 1.6%;
+  font-size: large;
+  color: rgb(73, 202, 107);
+  padding-top: 12px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 15rem;
+    gap: 8%;
+    width: 90%;
+  }
+  .child1 {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 2px;
+    padding: 9px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .main {
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 15rem;
+    gap: 8%;
+    width: 90%;
+  }
+  .child1 {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 2px;
+    padding: 9px;
+  }
+}
