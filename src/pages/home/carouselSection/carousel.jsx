@@ -26,7 +26,7 @@ const NextBtn = (props) => {
 const Carousel = () => {
   
   return (
-    <div style={{marginLeft: "10%", marginTop: "10rem", border: "3px solid blue", width:"80%", magin: "auto" }} className="carousel">
+    <div style={{marginLeft: "10%", marginTop: "10rem", width:"80%", magin: "auto" }} className="carousel">
       <Slider
         autoplay
         autoplaySpeed={2000}
