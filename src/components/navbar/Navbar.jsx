@@ -34,7 +34,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <Box position={"fixed"} w={"100%"} top="0" left="0" right="0" zIndex="9999">
+    <Box position={"sticky"} w={"100%"} top="0" left="0"  zIndex="24">
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}

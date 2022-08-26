@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./carousel.css";
 import { data } from "./data";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Box } from "@chakra-ui/react";
 
 const PreviousBtn = (props) => {
   // console.log(props);
@@ -26,7 +27,7 @@ const NextBtn = (props) => {
 const Carousel = () => {
   
   return (
-    <div style={{marginLeft: "10%", marginTop: "10rem", width:"80%", magin: "auto" }} className="carousel">
+    <Box marginLeft={{md:"10%"}}  marginTop= "2rem" w={{base: "100%", md:"80%" }} magin="auto" className="carousel">
       <Slider
         autoplay
         autoplaySpeed={2000}
@@ -55,11 +56,11 @@ const Carousel = () => {
       >
         {data.map((item) => (
           <div>
-            <img src={item} alt="" style={{ width: "100%", height: "80vh" }} />
+            <img src={item} alt="" style={{ width: "100%", minheight: "80vh" }} />
           </div>
         ))}
       </Slider>
-    </div>
+    </Box>
   );
 };
 
