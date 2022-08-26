@@ -1,7 +1,8 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react'
-import Carousel from './carousel';
-// import Carousol from '../../components/carousel';
+import Carousel from './carouselSection/carousel';
+
+
 
 import styles from "./home.module.css";
 
