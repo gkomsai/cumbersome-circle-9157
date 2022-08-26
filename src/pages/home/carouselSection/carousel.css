@@ -1,9 +1,4 @@
 
-#carousel-div{
-  border: 5 px solid red;
-  margin: "50px";
-}
-
 .carousel .slick-arrow.slick-prev,
 .carousel .slick-arrow.slick-next {
   background: #fcfcfc;
