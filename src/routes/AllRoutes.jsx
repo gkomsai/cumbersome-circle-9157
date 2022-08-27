@@ -7,6 +7,7 @@ import Reports from "../pages/dashboard/Reports";
 import Team from "../pages/dashboard/Team";
 import Time from "../pages/dashboard/Timer";
 import Demo from "../pages/demo/Demo";
+import Error from "../pages/Error";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Pricing from "../pages/pricing/Pricing";
@@ -27,6 +28,7 @@ const AllRoutes = () => {
       <Route path="/dashboard/team" element={<PrivateRoute><Team /></PrivateRoute>} />
       <Route path="/dashboard/time" element={<PrivateRoute><Time /></PrivateRoute>} />
       <Route path="/dashboard/reports" element={<PrivateRoute><Reports /></PrivateRoute>} />
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 };
