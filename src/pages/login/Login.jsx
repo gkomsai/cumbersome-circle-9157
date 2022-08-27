@@ -11,32 +11,54 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
 export default function SimpleCard() {
   const navigate = useNavigate();
+  const toast = useToast();
+  let regUsers = JSON.parse(localStorage.getItem("userDetails"));
 
-  var signupArr = JSON.parse(localStorage.getItem("signup"));
-  const [loginform, setloginform] = useState({
+  const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const handchange = (e) => {
     const { name, value } = e.target;
-    setloginform({ ...loginform, [name]: value });
+    setUser({ ...user, [name]: value });
   };
   const loginhandle = (e) => {
     e.preventDefault();
-    console.log("Govind");
-    for (var i = 0; i < signupArr.length; i++) {
-      if (loginform.email === signupArr[i].email && loginform.password === signupArr[i].password) {
-        alert("Login Success !........");
+
+    for (var i = 0; i < regUsers.length; i++) {
+      if (
+        user.email === regUsers[i].email &&
+        user.password === regUsers[i].password
+      ) {
+        setUser({
+          email: "",
+          password: "",
+        });
+        toast({
+          title: "Login Successfull !!!",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
         navigate("/dashboard");
-      }else{
-        alert ("please login with correct credentials");
+      } else {
+        toast({
+          title: "Please Enter correct credentials",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+        });
       }
     }
   };
@@ -61,14 +83,14 @@ export default function SimpleCard() {
           boxShadow={"lg"}
           p={8}
         >
-          <FormControl onSubmit={loginhandle}>
+          <form onSubmit={loginhandle}>
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
                 <Input
                   type="email"
                   name="email"
-                  value={loginform.email}
+                  value={user.email}
                   onChange={handchange}
                 />
               </FormControl>
@@ -77,7 +99,7 @@ export default function SimpleCard() {
                 <Input
                   type="password"
                   name="password"
-                  value={loginform.password}
+                  value={user.password}
                   onChange={handchange}
                 />
               </FormControl>
@@ -102,7 +124,7 @@ export default function SimpleCard() {
                 </Button>
               </Stack>
             </Stack>
-          </FormControl>
+          </form>
         </Box>
       </Stack>
     </Flex>

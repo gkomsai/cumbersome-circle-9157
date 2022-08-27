@@ -2,7 +2,10 @@ import { Box, Button, HStack, Input } from "@chakra-ui/react";
 import React from "react";
 import { CustomCalander } from "./Calender";
 
-const Time = () => {
+const Timer = () => {
+
+
+  
   return (
     <Box w="100%">
       <HStack>
@@ -24,4 +27,4 @@ const Time = () => {
   );
 };
 
-export default Time;
+export default Timer;

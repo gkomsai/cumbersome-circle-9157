@@ -4,7 +4,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Projects from "../pages/dashboard/Projects";
 import Reports from "../pages/dashboard/Reports";
 import Team from "../pages/dashboard/Team";
-import Time from "../pages/dashboard/Time";
+import Time from "../pages/dashboard/Timer";
 import Demo from "../pages/demo/Demo";
 import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
