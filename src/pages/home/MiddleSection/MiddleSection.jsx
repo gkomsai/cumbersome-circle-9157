@@ -1,15 +1,21 @@
 import React from "react";
-import { Tabs, TabList, Box, TabPanels, Tab, TabPanel} from "@chakra-ui/react";
+import { Tabs,  Box, TabPanels, Tab, TabPanel} from "@chakra-ui/react";
 import {  Accordion,  AccordionItem,  AccordionButton,  AccordionPanel,} from "@chakra-ui/react";
+import TimeTrack from "./TimeTrack";
+import BillingBudget from "./BillingBudget";
+import TaskManage from "./TaskManage";
+import VisualPlan from "./VisualPlan";
+import Expences from "./Expences";
+import Invoice from "./Invoice";
 
-import TimeTrack from "./MidPart/TimeTrack";
-import BillingBudget from "./MidPart/BillingBudget";
-import TaskManage from "./MidPart/TaskManage";
-import VisualPlan from "./MidPart/VisualPlan";
-import Expences from "./MidPart/Expences";
-import Invoice from "./MidPart/Invoice";
 
-const MidPart = () => {
+
+
+ 
+
+
+
+const MiddleSection = () => {
   return (
     <div>     
    
@@ -177,4 +183,4 @@ const MidPart = () => {
   );
 };
 
-export default MidPart;
+export default MiddleSection
