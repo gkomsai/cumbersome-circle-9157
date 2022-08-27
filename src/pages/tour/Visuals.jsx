@@ -7,51 +7,21 @@ import ReactPlayer from 'react-player'
 const Visuals = () => {
   return (
     <Box>
-        <Heading
-        size="sm"
-        pt={"200px"}
-        fontWeight={"500"}
-        fontSize="35px"
-        // color={"grey"}
-        textAlign={"center"}
-      >
+        <Heading size="sm" pt={"200px"} fontWeight={"500"} fontSize="35px" textAlign={"center"}>
         Visual projects and employee scheduling
       </Heading>
-      <Heading
-        size="sm"
-        pt={"8px"}
-        fontWeight={"400"}
-        fontSize="20px"
-        color={"grey"}
-        textAlign={"center"}
-      >
+      <Heading size="sm" pt={"8px"} fontWeight={"400"} fontSize="20px" color={"grey"} textAlign={"center"}>
         Map out your plans and see them with clarity
       </Heading>
       <Box display={"flex"} justifyContent={"center"} p={"40px 0px"}>
       <ReactPlayer m="1rem 0 1rem 0" width='74rem' height="50rem" controls url="https://youtu.be/-8vrEFdmA40"/>
       </Box>
-      <Box
-        display={"Grid"}
-        gridTemplateColumns={{
-          base: "repeat(2, 200px)",
-          md: "repeat(2, 300px)",
-          lg: "repeat(3, 300px)",
-        }}
-        gridTemplateRows={"repeat(250px , auto)"}
-        height={"auto"}
-        gap={"5%"}
-        padding={"30px 20px"}
-        justifyContent={"space-around"}
-      >
+      <Box display={"Grid"} gridTemplateColumns={{base: "repeat(2, 200px)", md: "repeat(2, 300px)", lg: "repeat(3, 300px)",}}
+        gridTemplateRows={"repeat(250px , auto)"} height={"auto"} gap={"5%"} padding={"30px 20px"} justifyContent={"space-around"}>
         <Box textAlign={"start"} borderBottom={"1px solid gray"}>
-          <Heading size="lg" fontSize="20px">
-            Visualize
-          </Heading>
+          <Heading size="lg" fontSize="20px">Visualize</Heading>
           <br />
-          <Text fontSize="md">
-            View an interactive plan with your team’s schedule or project
-            portfolio on one page.
-          </Text>
+          <Text fontSize="md">View an interactive plan with your team’s schedule or project portfolio on one pag</Text>
           <br />
         </Box>
         <Box textAlign={"start"} borderBottom={"1px solid gray"}>

@@ -14,7 +14,6 @@ const Review = ({ tourText }) => {
       gap={10}
       width={"85%"}
       margin={"auto"}
-      //   justifyContent={"space-around"}
     >
       {tourText.map((e) => {
         return (
