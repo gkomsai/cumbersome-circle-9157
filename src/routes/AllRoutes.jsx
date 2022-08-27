@@ -25,7 +25,7 @@ const AllRoutes = () => {
       <Route path="/dashboard/projects" element={<Projects />} />
       <Route path="/dashboard/team" element={<Team />} />
       <Route path="/dashboard/time" element={<Time />} />
-      <Route path="/dashboard/time" element={<Reports />} />
+      <Route path="/dashboard/reports" element={<Reports />} />
     </Routes>
   );
 };

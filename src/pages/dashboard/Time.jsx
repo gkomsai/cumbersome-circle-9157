@@ -1,9 +1,27 @@
-import React from 'react'
+import { Box, Button, HStack, Input } from "@chakra-ui/react";
+import React from "react";
+import { CustomCalander } from "./Calender";
 
 const Time = () => {
   return (
-    <div>Time</div>
-  )
-}
+    <Box w="100%">
+      <HStack>
+        <Input
+          h="70px"
+          placeholder="What are you working on"
+          size="lg"
+          style={{ width: "900px" }}
+        />
+        <div>
+          <Button h="70px" w="120px" colorScheme={"green"}>
+            Start Timer
+          </Button>
+        </div>
+      </HStack>
 
-export default Time
+      <CustomCalander />
+    </Box>
+  );
+};
+
+export default Time;

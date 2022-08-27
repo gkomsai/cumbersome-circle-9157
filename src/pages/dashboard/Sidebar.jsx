@@ -1,12 +1,9 @@
 import React, { ReactNode } from "react";
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
-  HStack,
-  VStack,
   Icon,
   useColorModeValue,
   Link,
@@ -28,28 +25,25 @@ import {
   FiMenu,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
+import { Link as RouterLink } from "react-router-dom";
 
 interface LinkItemProps {
   name: string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
-  { name: "Timer", icon: FiTrendingUp },
-  { name: "Project", icon: FiCompass },
-  { name: "Clients", icon: FiStar },
-  { name: "Team", icon: FiSettings },
-  { name: "Reports", icon: FiSettings },
+  { name: "Home", icon: FiHome, route: "#" },
+  { name: "Timer", icon: FiTrendingUp, route: "timer" },
+  { name: "Project", icon: FiCompass, route: "project" },
+  { name: "Clients", icon: FiStar, route: "clients" },
+  { name: "Team", icon: FiSettings, route: "team" },
+  { name: "Reports", icon: FiSettings, route: "reports" },
 ];
 
-export default function Sidebar({
-  children,
-}: {
-  children: ReactNode,
-}) {
+export default function Sidebar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" w="25%" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -94,10 +88,10 @@ const SidebarContent = ({ onClose, ...rest }) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
+      {LinkItems.map((el) => (
+        <RouterLink to={`/dashboard/${el.route}`} key={el.name}>
+          <NavItem icon={el.icon}>{el.name}</NavItem>
+        </RouterLink>
       ))}
     </Box>
   );
@@ -170,13 +164,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       >
         Logo
       </Text>
-      <Stack spacing={2}>
-        <Input placeholder="large size" size="lg" style={{ width: "800px" }} />
-      </Stack>
-      <div style={{ border: "solid 1px gray", padding: "12px" }}>
-        Time/Period
-      </div>
-      <div></div>
 
       <Flex alignItems={"center"}>
         <Menu></Menu>
