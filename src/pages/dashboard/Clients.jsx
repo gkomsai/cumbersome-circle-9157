@@ -1,7 +1,7 @@
 import { Button, Input, Modal, ModalBody,Flex,ModalCloseButton,Text, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, Box, Select } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Client() {
+export default function Clients() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [value, setValue] = React.useState('')
     const handleChange = (event) => setValue(event.target.value)
