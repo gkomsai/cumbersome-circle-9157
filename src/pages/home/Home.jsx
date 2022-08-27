@@ -5,6 +5,7 @@ import Carousel from "./carouselSection/carousel";
 import TopSection from "./carouselSection/TopSection";
 import ReviewSection from "./ReviewSection/ReviewSection";
 import TopPortion from "./TopSection/TopPortion";
+import MidPart from "../MidPart";
 
 const Home = () => {
 
@@ -12,7 +13,8 @@ const Home = () => {
   return (
     <Box>
       <TopPortion />
-      <TopSection />
+      <MidPart/>
+      <TopSection/>     
       <Carousel />
       <BottomSection />
       <ReviewSection />
