@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import Sidebar from "./Sidebar";
-import Time from "./Time";
+import Time from "./Timer";
 
 const Dashboard = () => {
   return (
