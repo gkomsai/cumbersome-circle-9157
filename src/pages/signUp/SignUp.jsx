@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { useNavigate } from "react-router";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export default function SignupCard() {
   const toast = useToast();
@@ -156,9 +156,9 @@ export default function SignupCard() {
             <Stack pt={6}>
               <Text align={"center"}>
                 Already a user?{" "}
-                <Link to="/login" color={"blue.400"}>
+                <RouterLink to="/login" color={"blue.400"}>
                   Login
-                </Link>
+                </RouterLink>
               </Text>
             </Stack>
           </Stack>
