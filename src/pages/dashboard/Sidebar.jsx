@@ -1,9 +1,12 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   IconButton,
+  Avatar,
   Box,
   CloseButton,
   Flex,
+  HStack,
+  VStack,
   Icon,
   useColorModeValue,
   Link,
@@ -11,39 +14,56 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
+  BoxProps,
   FlexProps,
   Menu,
-  Stack,
-  Input,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiTrendingUp,
-  FiCompass,
-  FiStar,
-  FiSettings,
-  FiMenu,
-} from "react-icons/fi";
+import { FiHome, FiMenu, FiChevronDown } from "react-icons/fi";
 import { IconType } from "react-icons";
+import { ReactText } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { MdAccessTimeFilled } from "react-icons/md";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import { FcManager } from "react-icons/fc";
+import { RiTeamLine } from "react-icons/ri";
+import { TbReport } from "react-icons/tb";
+import Timer from "./Timer";
+import Dashboard from "./Dashboard";
+import Projects from "./Projects";
+import Clients from "./Clients";
+import Team from "./Team";
+import Reports from "./Reports";
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-}
-const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome, route: "#" },
-  { name: "Timer", icon: FiTrendingUp, route: "timer" },
-  { name: "Project", icon: FiCompass, route: "project" },
-  { name: "Clients", icon: FiStar, route: "clients" },
-  { name: "Team", icon: FiSettings, route: "team" },
-  { name: "Reports", icon: FiSettings, route: "reports" },
+const LinkItems = [
+  { name: "Home", icon: FiHome, route: "#", child: <Dashboard /> },
+  { name: "Timer", icon: MdAccessTimeFilled, route: "timer", child: <Timer /> },
+  {
+    name: "Projects",
+    icon: AiOutlineFundProjectionScreen,
+    route: "project",
+    child: <Projects />,
+  },
+  { name: "Clients", icon: FcManager, route: "clients", child: <Clients /> },
+  { name: "Team", icon: RiTeamLine, route: "team", child: <Team /> },
+  { name: "Reports", icon: TbReport, route: "reports", child: <Reports /> },
 ];
 
-export default function Sidebar({ children }: { children: ReactNode }) {
+const user = JSON.parse(localStorage.getItem("userDetails"));
+if (user) {
+  var userName = user[0].firstName + " " + user[0].lastName;
+}
+
+export default function Sidebar({ children }) {
+  const [childComponent, setChildComponents] = useState(<Timer />);
+  children = childComponent;
+console.log(children+ "********")
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" w="25%" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -58,19 +78,32 @@ export default function Sidebar({ children }: { children: ReactNode }) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent onClose={onClose} />
+          <SidebarContent
+            setChildComponents={setChildComponents}
+            onClose={onClose}
+          />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
+      {/* mobilenav  i.e side header */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box bg="white" ml={{ base: 0, md: 60 }} p="4">
+        {" "}
+        {/* changesDone here for bg */}
         {children}
       </Box>
     </Box>
   );
 }
 
-const SidebarContent = ({ onClose, ...rest }) => {
+interface SidebarProps extends BoxProps {
+  onClose: () => void;
+}
+
+const SidebarContent = ({
+  onClose,
+  setChildComponents,
+  ...rest
+}: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
@@ -83,24 +116,30 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-       <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Everhour
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((el) => (
-        <RouterLink to={`/dashboard/${el.route}`} key={el.name}>
-          <NavItem icon={el.icon}>{el.name}</NavItem>
-        </RouterLink>
+        <Box key={el.name} onClick={() => setChildComponents(el.child)}>
+          <NavItem  to={`/dashboard/${el.route}`} icon={el.icon}>
+            {el.name}
+          </NavItem>
+        </Box>
       ))}
     </Box>
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+interface NavItemProps extends FlexProps {
+  icon: IconType;
+  children: ReactText;
+}
+const NavItem = ({ to, icon, children, ...rest }: NavItemProps) => {
   return (
-    <Link
-      href="#"
+    <RouterLink
+      to={to}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
@@ -129,7 +168,7 @@ const NavItem = ({ icon, children, ...rest }) => {
         )}
         {children}
       </Flex>
-    </Link>
+    </RouterLink>
   );
 };
 
@@ -146,6 +185,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
       <IconButton
@@ -162,12 +202,49 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Logo
+        Everhour
       </Text>
-
-      <Flex alignItems={"center"}>
-        <Menu></Menu>
-      </Flex>
+      <Box position={"sticky"} top="0" left="0">
+        <HStack spacing={{ base: "0", md: "6" }}>
+          <Flex alignItems={"center"}>
+            <Menu>
+              <MenuButton
+                py={2}
+                transition="all 0.3s"
+                _focus={{ boxShadow: "none" }}
+              >
+                <HStack>
+                  <Avatar size={"sm"} name={userName} src={""} />
+                  <VStack
+                    display={{ base: "none", md: "flex" }}
+                    alignItems="flex-start"
+                    spacing="1px"
+                    ml="2"
+                  >
+                    <Text fontSize="sm">{userName}</Text>
+                    <Text fontSize="xs" color="gray.600">
+                      Admin
+                    </Text>
+                  </VStack>
+                  <Box display={{ base: "none", md: "flex" }}>
+                    <FiChevronDown />
+                  </Box>
+                </HStack>
+              </MenuButton>
+              <MenuList
+                bg={useColorModeValue("white", "gray.900")}
+                borderColor={useColorModeValue("gray.200", "gray.700")}
+              >
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>Settings</MenuItem>
+                <MenuItem>Billing</MenuItem>
+                <MenuDivider />
+                <MenuItem>Sign out</MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </HStack>
+      </Box>
     </Flex>
   );
 };
