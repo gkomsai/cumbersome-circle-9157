@@ -1,23 +1,26 @@
 import React from "react";
 import { Box, Button, Center, Heading, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-
+const isAuth = JSON.parse(localStorage.getItem("userDetails"));
 const Error = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
     <>
       <Center>
         <Box mt={"4rem"}>
           <Image
-            width="45rem"
+            width="55rem"
             src="https://st.depositphotos.com/1020482/3088/i/950/depositphotos_30884685-stock-photo-404-error-page-not-found.jpg"
             alt=""
           />
         </Box>
-        <Heading color="red">Sorry, Page not found</Heading>
-        <br />
-        <Button onClick={()=>navigate("/")} >Go Back To HOME</Button>
       </Center>
+      <Heading color="red">Sorry, Page not found</Heading>
+      <br />
+      <Button onClick={() => (isAuth ? navigate("/dashboard") : navigate("/"))}>
+        Go Back To HOME
+      </Button>
     </>
   );
 };

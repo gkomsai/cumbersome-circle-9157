@@ -34,7 +34,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <Box position={"sticky"} w={"100%"} top="0" left="0"  zIndex="24">
+    <Box position={"sticky"} w={"100%"} top="0" left="0" zIndex="24">
       <Flex
         bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
@@ -131,13 +131,7 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box
-          key={navItem.label}
-          transition={"all .3s ease"}
-          _hover={{
-            fontWeight: "bold",   // we have to make smooth
-          }}
-        >
+        <Box key={navItem.label} _hover={{ color: "purple" }}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <RouterLink
@@ -181,7 +175,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, path, subLabel }) => {
   return (
     <RouterLink
-    to={path ?? "#"}  //changes to be done
+      to={path ?? "#"} //changes to be done
       role={"group"}
       display={"block"}
       p={2}
@@ -294,7 +288,15 @@ const NAV_ITEMS = [
     path: "/tour",
   },
   {
-    label: <Text>Integration <Tag variant='solid' colorScheme='green'> New </Tag></Text> ,
+    label: (
+      <Text>
+        Integration{" "}
+        <Tag variant="solid" colorScheme="green">
+          {" "}
+          New{" "}
+        </Tag>
+      </Text>
+    ),
     children: [
       {
         label: "Explore Design Work",
