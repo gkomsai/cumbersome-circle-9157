@@ -16,7 +16,7 @@
   <h3>Customers page: </h3>
 <img src="https://user-images.githubusercontent.com/96183163/180624173-e2597428-0c2c-463c-82c4-5b0306dda060.jpeg" />
   <h3>Pricing page: </h3>
-![image](https://user-images.githubusercontent.com/99814514/187064107-b85b80dd-65c5-4719-84ce-82e82113f447.png)
+<img src="https://user-images.githubusercontent.com/99814514/187064107-b85b80dd-65c5-4719-84ce-82e82113f447.png"/>
   <h3>Demo page: </h3>
 <img src="https://user-images.githubusercontent.com/96183163/180624301-50893ddf-28fe-4d6d-b162-d811a34026ee.jpeg" />
   <h3>Login page: </h3>
