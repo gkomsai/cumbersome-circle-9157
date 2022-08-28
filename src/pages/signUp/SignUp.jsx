@@ -12,7 +12,6 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -20,6 +19,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export default function SignupCard() {
+  const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
   let signupArr = JSON.parse(localStorage.getItem("userDetails")) || [];
@@ -68,7 +68,7 @@ export default function SignupCard() {
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
-            Sign up in to Everhour
+            Sign up to Everhour
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             to enjoy all of our cool features ✌️
@@ -123,7 +123,7 @@ export default function SignupCard() {
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
-                  type={userData ? "text" : "password"}
+                  type={showPassword ? "text" : "password"}
                   onChange={handform}
                   name="password"
                   value={userData.password}
@@ -132,9 +132,11 @@ export default function SignupCard() {
                 <InputRightElement h={"full"}>
                   <Button
                     variant={"ghost"}
-                    onClick={() => userData((showPassword) => !showPassword)}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
                   >
-                    {userData ? <ViewIcon /> : <ViewOffIcon />}
+                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
                 </InputRightElement>
               </InputGroup>

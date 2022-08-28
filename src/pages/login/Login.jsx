@@ -50,6 +50,7 @@ export default function SimpleCard() {
           position: "top",
         });
         navigate("/dashboard");
+        window.location.reload();
       } else {
         toast({
           title: "Please Enter correct credentials",

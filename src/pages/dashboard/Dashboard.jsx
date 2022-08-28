@@ -1,18 +1,13 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box,  } from "@chakra-ui/react";
 import React from "react";
 import Sidebar from "./Sidebar";
-import Time from "./Timer";
+
 
 const Dashboard = () => {
   return (
-    <Flex>
-      <Box>
-        <Sidebar />
-      </Box>
-      <Box>
-        <Time />
-      </Box>
-    </Flex>
+    <Box>
+    <Sidebar></Sidebar>
+    </Box>
   );
 };
 

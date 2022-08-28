@@ -7,7 +7,7 @@ const Timer = () => {
 
   
   return (
-    <Box w="100%">
+    <Box>
       <HStack>
         <Input
           h="70px"
