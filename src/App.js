@@ -6,9 +6,9 @@ const isAuth = JSON.parse(localStorage.getItem("userDetails"));
 function App() {
   return (
     <div className="App">
-      {!isAuth ? <Navbar /> : null}
+      {!isAuth && <Navbar />}
       <AllRoutes />
-      {!isAuth ? <Footer /> : null}
+      {!isAuth && <Footer />}
     </div>
   );
 }
