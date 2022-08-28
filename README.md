@@ -26,7 +26,7 @@
   <h3>Footer: </h3>
 <img src="https://user-images.githubusercontent.com/96183163/180624420-376c8f58-9b26-471f-93d0-1a15ebec229d.jpeg" />
 
-<h1>View Deployment</h1>
+<h1>View Deployment</h1>https://everhour-clone-1.netlify.app/
 </hr>
 <h4>Checkout live website :</h4>
 
