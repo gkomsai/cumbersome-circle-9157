@@ -37,8 +37,9 @@ const Footer = () => {
     <>
       <TopFooter />
       <Box
+        minWidth={"100vw"}
         bg={useColorModeValue("#151616", "#151616")}
-        mt={{ base: "18rem", md: "10rem", lg: "0rem" }}
+        mt={{ base: "3rem", md: "4rem", lg: "0rem" }}
         color={"white"}
         fontSize={{ base: "1rem", md: "0.75rem", lg: "0.95rem" }}
         paddingLeft={{ base: "2%" }}
@@ -136,7 +137,7 @@ const Footer = () => {
             align={{ base: "center", md: "center" }}
           >
             <Text> © 2022 Everhour Terms | Privacy | Cookies | Sitemap</Text>
-            
+
             <Stack direction={"row"} spacing={6}>
               <SocialButton label={"Facebook"} href={"#"}>
                 <FaFacebook />

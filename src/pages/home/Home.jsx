@@ -3,9 +3,10 @@ import React from "react";
 import BottomSection from "./carouselSection/BottomSection";
 import Carousel from "./carouselSection/carousel";
 import TopSection from "./carouselSection/TopSection";
+import MidPart from "./MiddleSection/MiddleSection";
 import ReviewSection from "./ReviewSection/ReviewSection";
 import TopPortion from "./TopSection/TopPortion";
-import MidPart from "../MidPart";
+
 
 const Home = () => {
 
