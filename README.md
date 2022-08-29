@@ -35,13 +35,13 @@
 
 ## Team Members and Contributors 😇 :
 
+- 👤 Gautam Kumar
+  Github: https://github.com/gkomsai
+
 - 👤 Prem Prakash
   Github: https://github.com/Premprakas7
-  
-  - 👤 Gautam Kumar
-  Github: https://github.com/gkomsai
-  
- - 👤 Sangam Kumar Singh
+
+- 👤 Sangam Kumar Singh
   Github :https://github.com/sangamk04
   
 - 👤 Govind lakhotiya
