@@ -28,9 +28,9 @@
 
 
 
-<h1>View Deployment</h1>https://everhour-clone-1.netlify.app/
+<h1>View Deployment</h1>
 </hr>
-<h4>Checkout live website :</h4>
+<h4>Checkout live website :https://everhour-clone-1.netlify.app/</h4>
 
 </hr>
 
