@@ -42,10 +42,10 @@
   Github: https://github.com/gkomsai
   
  - 👤 Sangam Kumar Singh
-  Github :
+  Github :https://github.com/sangamk04
   
 - 👤 Govind lakhotiya
-  Github: 
+  Github: https://github.com/Govindlakhotiya
   
 
   
