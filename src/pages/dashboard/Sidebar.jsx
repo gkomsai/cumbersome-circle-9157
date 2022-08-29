@@ -9,7 +9,6 @@ import {
   VStack,
   Icon,
   useColorModeValue,
-  Link,
   Drawer,
   DrawerContent,
   Text,
@@ -32,24 +31,18 @@ import { FcManager } from "react-icons/fc";
 import { RiTeamLine } from "react-icons/ri";
 import { TbReport } from "react-icons/tb";
 import Timer from "./Timer";
-import Dashboard from "./Dashboard";
-import Projects from "./Projects";
-import Clients from "./Clients";
-import Team from "./Team";
-import Reports from "./Reports";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome, route: "#", child: <Dashboard /> },
-  { name: "Timer", icon: MdAccessTimeFilled, route: "timer", child: <Timer /> },
+  { name: "Home", icon: FiHome, route: "#" },
+  { name: "Timer", icon: MdAccessTimeFilled, route: "timer" },
   {
     name: "Projects",
     icon: AiOutlineFundProjectionScreen,
     route: "project",
-    child: <Projects />,
   },
-  { name: "Clients", icon: FcManager, route: "clients", child: <Clients /> },
-  { name: "Team", icon: RiTeamLine, route: "team", child: <Team /> },
-  { name: "Reports", icon: TbReport, route: "reports", child: <Reports /> },
+  { name: "Clients", icon: FcManager, route: "clients" },
+  { name: "Team", icon: RiTeamLine, route: "team" },
+  { name: "Reports", icon: TbReport, route: "reports" },
 ];
 
 const user = JSON.parse(localStorage.getItem("userDetails"));
@@ -60,7 +53,7 @@ if (user) {
 export default function Sidebar({ children }) {
   const [childComponent, setChildComponents] = useState(<Timer />);
   children = childComponent;
-console.log(children+ "********")
+  // console.log(children + "********");
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")}>
@@ -122,8 +115,8 @@ const SidebarContent = ({
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((el) => (
-        <Box key={el.name} onClick={() => setChildComponents(el.child)}>
-          <NavItem  to={`/dashboard/${el.route}`} icon={el.icon}>
+        <Box key={el.name}>
+          <NavItem to={`/dashboard/${el.route}`} icon={el.icon}>
             {el.name}
           </NavItem>
         </Box>

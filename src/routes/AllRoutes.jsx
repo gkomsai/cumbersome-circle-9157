@@ -5,7 +5,8 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Projects from "../pages/dashboard/Projects";
 import Reports from "../pages/dashboard/Reports";
 import Team from "../pages/dashboard/Team";
-import Time from "../pages/dashboard/Timer";
+import Timer from "../pages/dashboard/Timer";
+import Clients from "../pages/dashboard/Clients";
 import Demo from "../pages/demo/Demo";
 import Error from "../pages/Error";
 import Home from "../pages/home/Home";
@@ -26,7 +27,8 @@ const AllRoutes = () => {
       <Route path="/dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute>} />
       <Route path="/dashboard/projects" element={<PrivateRoute><Projects /></PrivateRoute>} />
       <Route path="/dashboard/team" element={<PrivateRoute><Team /></PrivateRoute>} />
-      <Route path="/dashboard/time" element={<PrivateRoute><Time /></PrivateRoute>} />
+      <Route path="/dashboard/clients" element={<PrivateRoute><Clients /></PrivateRoute>} />
+      <Route path="/dashboard/timer" element={<PrivateRoute><Timer /></PrivateRoute>} />
       <Route path="/dashboard/reports" element={<PrivateRoute><Reports /></PrivateRoute>} />
       <Route path="*" element={<Error />} />
     </Routes>
