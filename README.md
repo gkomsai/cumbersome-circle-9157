@@ -31,8 +31,25 @@
 <h1>View Deployment</h1>
 </hr>
 <h4>Checkout live website :https://everhour-clone-1.netlify.app/</h4>
-
 </hr>
+
+## Team Members and Contributors 😇 :
+
+- 👤 Prem Prakash
+  Github: https://github.com/Premprakas7
+  
+  - 👤 Gautam Kumar
+  Github: https://github.com/gkomsai
+  
+ - 👤 Sangam Kumar Singh
+  Github :
+  
+- 👤 Govind lakhotiya
+  Github: 
+  
+
+  
+
 
 </hr>
 <h1>Tech Stack </h1>
