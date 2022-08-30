@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import {
   IconButton,
   Avatar,
@@ -197,7 +197,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       >
         Everhour
       </Text>
-      <Box position={"sticky"} top="0" left="0">
+      <Box position={"sticky"} top="0" left="0" zIndex={54}>
         <HStack spacing={{ base: "0", md: "6" }}>
           <Flex alignItems={"center"}>
             <Menu>
