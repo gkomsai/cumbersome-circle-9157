@@ -24,12 +24,20 @@ const AllRoutes = () => {
       <Route path="/request-a-demo" element={<Demo />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute>} />
-      <Route path="/dashboard/projects" element={<PrivateRoute><Projects /></PrivateRoute>} />
-      <Route path="/dashboard/team" element={<PrivateRoute><Team /></PrivateRoute>} />
-      <Route path="/dashboard/clients" element={<PrivateRoute><Clients /></PrivateRoute>} />
-      <Route path="/dashboard/timer" element={<PrivateRoute><Timer /></PrivateRoute>} />
-      <Route path="/dashboard/reports" element={<PrivateRoute><Reports /></PrivateRoute>} />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      >
+        <Route path="projects" element={<Projects />} />
+        <Route path="team" element={<Team />} />
+        <Route path="clients" element={<Clients />} />
+        <Route path="timer" element={<Timer />} />
+        <Route path="reports" element={<Reports />} />
+      </Route>
       <Route path="*" element={<Error />} />
     </Routes>
   );

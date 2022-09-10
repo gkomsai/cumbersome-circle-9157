@@ -30,15 +30,14 @@ import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { FcManager } from "react-icons/fc";
 import { RiTeamLine } from "react-icons/ri";
 import { TbReport } from "react-icons/tb";
-import Timer from "./Timer";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome, route: "#" },
+  { name: "Home", icon: FiHome, route: "" },
   { name: "Timer", icon: MdAccessTimeFilled, route: "timer" },
   {
     name: "Projects",
     icon: AiOutlineFundProjectionScreen,
-    route: "project",
+    route: "projects",
   },
   { name: "Clients", icon: FcManager, route: "clients" },
   { name: "Team", icon: RiTeamLine, route: "team" },
@@ -51,9 +50,7 @@ if (user) {
 }
 
 export default function Sidebar({ children }) {
-  const [childComponent, setChildComponents] = useState(<Timer />);
-  children = childComponent;
-  // console.log(children + "********");
+ 
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")}>
@@ -71,10 +68,7 @@ export default function Sidebar({ children }) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent
-            setChildComponents={setChildComponents}
-            onClose={onClose}
-          />
+          <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav  i.e side header */}
@@ -92,11 +86,7 @@ interface SidebarProps extends BoxProps {
   onClose: () => void;
 }
 
-const SidebarContent = ({
-  onClose,
-  setChildComponents,
-  ...rest
-}: SidebarProps) => {
+const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
       transition="3s ease"
