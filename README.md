@@ -23,6 +23,9 @@
 
   <h3>Login page: </h3>
 <img src="https://user-images.githubusercontent.com/101813593/190867529-79905a97-8827-46cb-8c96-b8405801b3ed.png" alt="Login page" />
+  <h3>Dashboard page: </h3>
+<img src="https://user-images.githubusercontent.com/101813593/190910505-e85354ef-bbc5-4808-b0f6-bf1dabb39df0.png" alt="Dashboard page" />
+
 
   <h3>Footer: </h3>
 <img src="https://user-images.githubusercontent.com/101813593/187067413-b3f2123b-fbb5-4644-9132-8b9d0a0a7594.PNG" alt="Footer" />
