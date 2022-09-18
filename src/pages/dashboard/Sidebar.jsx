@@ -24,12 +24,13 @@ import {
 import { FiHome, FiMenu, FiChevronDown } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { ReactText } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { FcManager } from "react-icons/fc";
 import { RiTeamLine } from "react-icons/ri";
 import { TbReport } from "react-icons/tb";
+import { removeItemFromLocal } from "../../utils/accessLocal";
 
 const LinkItems = [
   { name: "Home", icon: FiHome, route: "home" },
@@ -159,6 +160,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const navigate = useNavigate();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -222,7 +224,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 <MenuItem>Settings</MenuItem>
                 <MenuItem>Billing</MenuItem>
                 <MenuDivider />
-                <MenuItem>Sign out</MenuItem>
+                <MenuItem onClick={()=>{
+                  removeItemFromLocal("userDetails");
+                  navigate("/");
+                  window.location.reload();
+                  }} >Sign out</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
