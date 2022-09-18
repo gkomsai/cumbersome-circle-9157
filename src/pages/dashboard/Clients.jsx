@@ -12,83 +12,93 @@ import {
   ModalOverlay,
   useDisclosure,
   Box,
-  Select,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Clients() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [value, setValue] = React.useState("");
-  const handleChange = (event) => setValue(event.target.value);
+  const [client, setClient] = useState("");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setClient({ ...client, [name]: value });
+  };
 
+  const handleClientSubmit = (e) => {
+    e.preventDefault();
+    console.log("Inside function");
+    console.log(client);
+  };
   return (
     <>
-      <Button float ="right" onClick={onOpen} backgroundColor="#24be6a" color="white">
+      <Button
+        float="right"
+        onClick={onOpen}
+        backgroundColor="#24be6a"
+        color="white"
+      >
         Create Client
       </Button>
+      <form>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Create Client</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Text mb="8px">Client Name</Text>
+              <Input
+                name="clientName"
+                onChange={handleChange}
+                mb="10px"
+                size="sm"
+              />
+              <Text mb="8px">Project </Text>
+              <Input
+                name="projectName"
+                onChange={handleChange}
+                placeholder="Enter Project name"
+                mb="10px"
+                size="sm"
+              />
+              <Text mb="8px">Email</Text>
+              <Input name="email" onChange={handleChange} mb="10px" size="sm" />
+              <Text mb="8px">Business Details</Text>
+              <Input
+                name="BusinessDetails"
+                onChange={handleChange}
+                mb="10px"
+                size="sm"
+              />
+              <Flex>
+                <Box>
+                  <Text mb="8px"> Estimated Cost </Text>
+                  <Input
+                    name="projectCost"
+                    onChange={handleChange}
+                    mb="10px"
+                    size="sm"
+                    width="95%"
+                  />
+                </Box>
+              </Flex>
+            </ModalBody>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Create Client</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text mb="8px">Client Name: {value}</Text>
-            <Input value={value} onChange={handleChange} mb="10px" size="sm" />
-            <Text mb="8px">Project {value}</Text>
-            <Input
-              value={value}
-              onChange={handleChange}
-              placeholder="Select project.."
-              mb="10px"
-              size="sm"
-            />
-            <Text mb="8px">Email: {value}</Text>
-            <Input value={value} onChange={handleChange} mb="10px" size="sm" />
-            <Text mb="8px">Business Details {value}</Text>
-            <Input value={value} onChange={handleChange} mb="10px" size="sm" />
-            <Flex>
-              <Box>
-                <Text mb="8px">Tax % {value}</Text>
-                <Input
-                  value={value}
-                  onChange={handleChange}
-                  mb="10px"
-                  size="sm"
-                  width="95%"
-                />
-              </Box>
-              <Box>
-                <Text mb="8px">Discount % {value}</Text>
-                <Input
-                  value={value}
-                  onChange={handleChange}
-                  mb="10px"
-                  size="sm"
-                  width="95%"
-                />
-              </Box>
-              <Box>
-                <Select
-                  placeholder="Immediately:"
-                  border="solid 1px black"
-                  mt="28px"
-                >
-                  <option value="Immediately:">Immediately</option>
-                  <option value="+3 days">+3 days</option>
-                  <option value="+4 days">+5 days</option>
-                </Select>
-              </Box>
-            </Flex>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Create Client
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            <ModalFooter>
+              <Button
+                type="submit"
+                onClick={(e) => {
+                  handleClientSubmit(e);
+                  onClose();
+                }}
+                colorScheme="blue"
+                mr={3}
+              >
+                Create Client
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </form>
     </>
   );
 }
