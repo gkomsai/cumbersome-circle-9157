@@ -9,11 +9,12 @@ import Timer from "../pages/dashboard/Timer";
 import Clients from "../pages/dashboard/Clients";
 import Demo from "../pages/demo/Demo";
 import Error from "../pages/Error";
-import Home from "../pages/home/Home";
+import Home  from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Pricing from "../pages/pricing/Pricing";
 import SignUp from "../pages/signUp/SignUp";
 import Tour from "../pages/tour/Tour";
+import DashboardHome from "../pages/dashboard/Home";
 
 const AllRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       >
+        <Route path="home" element={<DashboardHome />} />
         <Route path="projects" element={<Projects />} />
         <Route path="team" element={<Team />} />
         <Route path="clients" element={<Clients />} />

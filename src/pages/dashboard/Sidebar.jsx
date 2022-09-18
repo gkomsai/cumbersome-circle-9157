@@ -32,7 +32,7 @@ import { RiTeamLine } from "react-icons/ri";
 import { TbReport } from "react-icons/tb";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome, route: "" },
+  { name: "Home", icon: FiHome, route: "home" },
   { name: "Timer", icon: MdAccessTimeFilled, route: "timer" },
   {
     name: "Projects",

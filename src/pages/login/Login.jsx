@@ -49,7 +49,7 @@ export default function SimpleCard() {
           isClosable: true,
           position: "top",
         });
-        navigate("/dashboard");
+        navigate("/dashboard/home");
         window.location.reload();
       } else {
         toast({

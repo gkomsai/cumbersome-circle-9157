@@ -1,9 +1,9 @@
-import { Box, Button, HStack, Input } from "@chakra-ui/react";
+import { Box, HStack, Input } from "@chakra-ui/react";
 import React from "react";
 import { CustomCalander } from "./Calender";
 import TimerFun from "./TimerFun";
 
-const Timer = () => {
+const DashboardHome = () => {
   return (
     <Box>
       <HStack>
@@ -18,4 +18,4 @@ const Timer = () => {
   );
 };
 
-export default Timer;
+export default DashboardHome;
