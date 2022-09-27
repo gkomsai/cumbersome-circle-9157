@@ -36,10 +36,7 @@
 </hr>
 <h4>Checkout live website :https://everhour-clone-1.netlify.app/</h4>
 </hr>
-<h1>Watch Presentation</h1>
-</hr>
-<h4>Checkout project presentaion: https://drive.google.com/file/d/11wDsw-5eCuzTIF4jIpaMpraFo2Fq7bI6/view?usp=sharing </h4>
-</hr>
+
 
 ## Team Members and Contributors 😇 :
 
