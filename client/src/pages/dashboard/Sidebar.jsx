@@ -13,6 +13,7 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
+  useToast,
   BoxProps,
   FlexProps,
   Menu,
@@ -31,6 +32,9 @@ import { FcManager } from "react-icons/fc";
 import { RiTeamLine } from "react-icons/ri";
 import { TbReport } from "react-icons/tb";
 import { removeItemFromLocal } from "../../utils/accessLocal";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutSuccess } from "../../Redux/auth/action";
+import { notify } from "../../utils/extraFunctions";
 
 const LinkItems = [
   { name: "Home", icon: FiHome, route: "home" },
@@ -45,13 +49,8 @@ const LinkItems = [
   { name: "Reports", icon: TbReport, route: "reports" },
 ];
 
-const user = JSON.parse(localStorage.getItem("userDetails"));
-if (user) {
-  var userName = user[0].firstName + " " + user[0].lastName;
-}
-
 export default function Sidebar({ children }) {
- 
+  
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")}>
@@ -161,6 +160,27 @@ interface MobileProps extends FlexProps {
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const toast = useToast();
+
+
+  const user = useSelector((store) => store.authReducer.user);
+  if (user) {
+    var userName = user.firstName + " " + user.lastName;
+  }
+
+
+  const handleLogout = () => {
+    dispatch(logoutSuccess());
+    removeItemFromLocal("token");
+    removeItemFromLocal("user");
+    notify(toast, "Logout Successfully", "success");
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
+
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -224,11 +244,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 <MenuItem>Settings</MenuItem>
                 <MenuItem>Billing</MenuItem>
                 <MenuDivider />
-                <MenuItem onClick={()=>{
-                  removeItemFromLocal("userDetails");
-                  navigate("/");
-                  window.location.reload();
-                  }} >Sign out</MenuItem>
+                <MenuItem
+                  onClick={handleLogout}
+                >
+                  Sign out
+                </MenuItem>
               </MenuList>
             </Menu>
           </Flex>
