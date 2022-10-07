@@ -6,16 +6,18 @@ require("dotenv").config();
 const { UserModel } = require("../models/userModel.js");
 const { emailValidator } = require("../middleware/emailValidator.js");
 const { passwordValidator } = require("../middleware/passwordValidator.js");
-const { emailPassRequiredValidator } = require("../middleware/emailPassRequiredValidator.js");
+const {
+  emailPassRequiredValidator,
+} = require("../middleware/emailPassRequiredValidator.js");
 
 const userRouter = Router();
 
 userRouter.post(
   "/signup",
-  [emailPassRequiredValidator ,emailValidator, passwordValidator],
+  [emailPassRequiredValidator, emailValidator, passwordValidator],
   async (req, res) => {
     try {
-      // console.log(req.body);
+      console.log(req.body);
       const { email, password } = req.body;
       const isEmailPresent = await UserModel.findOne({ email });
       // console.log(isEmailPresent);
@@ -51,50 +53,45 @@ userRouter.post(
   }
 );
 
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/login", emailPassRequiredValidator, async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (email && password) {
-      const user = await UserModel.findOne({ email });
-      //   console.log(user);
-      if (user) {
-        let hash = user.password;
-        bcrypt.compare(password, hash, function (err, result) {
-          if (err) {
-            return res.send({
-              message: "Something went wrong, plz try again later",
-              status: "error",
-            });
-          }
-          if (result) {
-            const token = jwt.sign(
-              { userId: user._id, email: email },
-              process.env.JWT_SECRET_KEY,
-              {
-                expiresIn: "5h",
-              }
-            );
-            return res.status(200).send({
-              status: "success",
-              message: "Login Successfull!!!",
-              token: token,
-              user: user,
-            });
-          } else {
-            return res
-              .status(400)
-              .send({ status: "error", message: "Invalid Credentials" });
-          }
-        });
-      } else {
-        return res
-          .status(400)
-          .send({ status: "error", message: "Invalid Credentials" });
-      }
+
+    const user = await UserModel.findOne({ email });
+    //   console.log(user);
+    if (user) {
+      let hash = user.password;
+      bcrypt.compare(password, hash, function (err, result) {
+        if (err) {
+          return res.send({
+            message: "Something went wrong, plz try again later",
+            status: "error",
+          });
+        }
+        if (result) {
+          const token = jwt.sign(
+            { userId: user._id, email: email },
+            process.env.JWT_SECRET_KEY,
+            {
+              expiresIn: "5h",
+            }
+          );
+          return res.status(200).send({
+            status: "success",
+            message: "Login Successfull!!!",
+            token: token,
+            user: user,
+          });
+        } else {
+          return res
+            .status(400)
+            .send({ status: "error", message: "Invalid Credentials" });
+        }
+      });
     } else {
       return res
         .status(400)
-        .send({ status: "error", message: "All Fields are Required" });
+        .send({ status: "error", message: "Invalid Credentials" });
     }
   } catch (err) {
     // console.log(err);
@@ -153,8 +150,8 @@ userRouter.post("/forgotten_password", async (req, res) => {
 userRouter.post("/reset-password/:id/:token", async (req, res) => {
   const { password, confirmPassword } = req.body;
   const { id, token } = req.params;
-  console.log(req.params);
-  console.log(id);
+  // console.log(req.params);
+  // console.log(id);
 
   const user = await UserModel.findById(id);
 

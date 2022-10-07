@@ -24,7 +24,7 @@ import {
 } from "../../Redux/auth/action";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { notify } from "../../routes/extraFunctions";
+import { notify } from "../../utils/extraFunctions";
 
 export default function SignupCard() {
   const [showPassword, setShowPassword] = useState(false);

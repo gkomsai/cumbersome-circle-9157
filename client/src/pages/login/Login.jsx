@@ -13,54 +13,45 @@ import {
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
-
+import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import {
+  loginFailure,
+  loginRequest,
+  loginSuccess,
+} from "../../Redux/auth/action";
+import { notify } from "../../utils/extraFunctions";
 
 export default function SimpleCard() {
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const toast = useToast();
-  let regUsers = JSON.parse(localStorage.getItem("userDetails"));
 
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-  const handchange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (e) => {
+    let { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-  const loginhandle = (e) => {
-    e.preventDefault();
 
-    for (var i = 0; i < regUsers.length; i++) {
-      if (
-        user.email === regUsers[i].email &&
-        user.password === regUsers[i].password
-      ) {
-        setUser({
-          email: "",
-          password: "",
-        });
-        toast({
-          title: "Login Successfull !!!",
-          status: "success",
-          duration: 2000,
-          isClosable: true,
-          position: "top",
-        });
-        navigate("/dashboard/home");
-        window.location.reload();
-      } else {
-        toast({
-          title: "Please Enter correct credentials",
-          status: "error",
-          duration: 2000,
-          isClosable: true,
-          position: "top",
-        });
-      }
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(loginRequest());
+    axios
+      .post(`/login`, user)
+      .then((res) => {
+        if (res.data.token) {
+          dispatch(loginSuccess(res.data));
+          notify(toast, res.data.message, "success");
+          navigate("/dashboard/home");
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        notify(toast, err.response.data.message, "error");
+        dispatch(loginFailure());
+      });
   };
 
   return (
@@ -83,7 +74,7 @@ export default function SimpleCard() {
           boxShadow={"lg"}
           p={8}
         >
-          <form onSubmit={loginhandle}>
+          <form onSubmit={handleLogin}>
             <Stack spacing={4}>
               <FormControl id="email">
                 <FormLabel>Email address</FormLabel>
@@ -91,7 +82,7 @@ export default function SimpleCard() {
                   type="email"
                   name="email"
                   value={user.email}
-                  onChange={handchange}
+                  onChange={handleChange}
                 />
               </FormControl>
               <FormControl id="password">
@@ -100,7 +91,7 @@ export default function SimpleCard() {
                   type="password"
                   name="password"
                   value={user.password}
-                  onChange={handchange}
+                  onChange={handleChange}
                 />
               </FormControl>
               <Stack spacing={10}>
@@ -113,12 +104,12 @@ export default function SimpleCard() {
                   <Link color={"blue.400"}>Forgot password?</Link>
                 </Stack>
                 <Button
+                  type="submit"
                   bg={"blue.400"}
                   color={"white"}
                   _hover={{
                     bg: "blue.500",
                   }}
-                  onClick={loginhandle}
                 >
                   Sign in
                 </Button>

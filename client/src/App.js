@@ -1,14 +1,17 @@
+import { useSelector } from "react-redux";
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import AllRoutes from "./routes/AllRoutes";
-const isAuth = JSON.parse(localStorage.getItem("userDetails"));
+
 function App() {
+const token = useSelector((store) => store.authReducer.token);
+
   return (
     <div className="App">
-      {!isAuth && <Navbar />}
+      {!token && <Navbar />}
       <AllRoutes />
-      {!isAuth && <Footer />}
+      {!token && <Footer />}
     </div>
   );
 }
