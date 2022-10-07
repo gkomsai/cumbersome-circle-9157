@@ -1,4 +1,4 @@
-const express = require("express");
+// const express = require("express");
 const { Router } = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -6,12 +6,13 @@ require("dotenv").config();
 const { UserModel } = require("../models/userModel.js");
 const { emailValidator } = require("../middleware/emailValidator.js");
 const { passwordValidator } = require("../middleware/passwordValidator.js");
+const { emailPassRequiredValidator } = require("../middleware/emailPassRequiredValidator.js");
 
 const userRouter = Router();
 
 userRouter.post(
   "/signup",
-  [emailValidator, passwordValidator],
+  [emailPassRequiredValidator ,emailValidator, passwordValidator],
   async (req, res) => {
     try {
       // console.log(req.body);
@@ -36,7 +37,7 @@ userRouter.post(
             });
           })
           .catch((err) => {
-            // console.log(err);
+            console.log(err);
 
             return res
               .status(400)
@@ -44,6 +45,7 @@ userRouter.post(
           });
       }
     } catch (err) {
+      console.log(err);
       return res.status(400).send({ status: "error", message: err.message });
     }
   }
