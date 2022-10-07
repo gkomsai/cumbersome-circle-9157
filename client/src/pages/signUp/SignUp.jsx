@@ -17,44 +17,45 @@ import {
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import {
+  signupFailure,
+  signupRequest,
+  signupSuccess,
+} from "../../Redux/auth/action";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { notify } from "../../routes/extraFunctions";
 
 export default function SignupCard() {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
-  let signupArr = JSON.parse(localStorage.getItem("userDetails")) || [];
+  const dispatch = useDispatch();
 
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
+  const [user, setUser] = useState({});
 
   const handform = (e) => {
     let { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
+    setUser({ ...user, [name]: value });
   };
 
-  const handlesub = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    signupArr.push(userData);
-    localStorage.setItem("userDetails", JSON.stringify(signupArr));
-    setUserData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    });
-    toast({
-      title: "Signup Successfull !!!",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-      position: "top",
-    });
-    navigate("/login");
-    console.log(userData);
+    dispatch(signupRequest());
+    axios
+      .post(`/signup`, user)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data) {
+          dispatch(signupSuccess(res.data));
+          notify(toast, "Account Created Successfully", "success");
+          navigate("/login");
+        }
+      })
+      .catch((err) => {
+        notify(toast, err.response.data.message, "error");
+        dispatch(signupFailure());
+      });
   };
 
   return (
@@ -63,7 +64,6 @@ export default function SignupCard() {
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
-      isRequired
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -89,9 +89,8 @@ export default function SignupCard() {
                     name="firstName"
                     type="text"
                     placeholder="Enter first name"
-                    value={userData.firstName}
+                    value={user.firstName}
                     onChange={handform}
-                    isRequired
                   />
                 </FormControl>
               </Box>
@@ -102,9 +101,8 @@ export default function SignupCard() {
                     name="lastName"
                     type="text"
                     placeholder="Enter Last name"
-                    value={userData.lastName}
+                    value={user.lastName}
                     onChange={handform}
-                    isRequired
                   />
                 </FormControl>
               </Box>
@@ -115,8 +113,7 @@ export default function SignupCard() {
                 type="email"
                 onChange={handform}
                 name="email"
-                value={userData.email}
-                isRequired
+                value={user.email}
               />
             </FormControl>
             <FormControl id="password" isRequired>
@@ -126,8 +123,7 @@ export default function SignupCard() {
                   type={showPassword ? "text" : "password"}
                   onChange={handform}
                   name="password"
-                  value={userData.password}
-                  isRequired
+                  value={user.password}
                 />
                 <InputRightElement h={"full"}>
                   <Button
@@ -150,7 +146,7 @@ export default function SignupCard() {
                 _hover={{
                   bg: "blue.500",
                 }}
-                onClick={handlesub}
+                onClick={handleSignup}
               >
                 Sign up
               </Button>

@@ -11,16 +11,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+app.use("/",userRouter);
+
+app.use("/dashboard/projects", projectRouter);
+app.use("/dashboard/clients", clientRouter);
+
+
 app.get("/",( req,res)=>{
   res.send("Welcome to EverHour backend server home page");
 });
 
 
 
-app.use("/",userRouter);
-
-app.use("/dashboard/projects", projectRouter);
-app.use("/dashboard/clients", clientRouter);
 
 
 app.listen(port, async () => {
