@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const authentication = async (req, res, next) => {
+const autherisation = async (req, res, next) => {
   if (!req.headers.authorization || !req.headers.authorization.startsWith("Bearer")) {
    return res.status(401).send("Please login first");
   }
@@ -18,4 +18,4 @@ const authentication = async (req, res, next) => {
     });
   }
 
-module.exports = { authentication };
+module.exports = { autherisation };

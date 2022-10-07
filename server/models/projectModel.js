@@ -32,11 +32,13 @@ const projectSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    userId: { type: String, required: true },
   },
   { versionKey: false, timestamps: true }
 );
 
-const ProjectModel = mongoose.model("user", projectSchema);
+const ProjectModel = mongoose.model("project", projectSchema);
 module.exports = { ProjectModel };
+
 
     
