@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const { UserModel } = require("../models/userModel.js");
+const { emailValidator } = require("../middleware/emailValidator.js");
+const { passwordValidator } = require("../middleware/passwordValidator.js");
 
 const userRouter = Router();
 
