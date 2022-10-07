@@ -1,15 +1,91 @@
-export const GET_PROJECT_REQUEST = "GET_PROJECT_REQUEST";
-export const GET_PROJECT_SUCCESS = "GET_PROJECT_SUCCESS";
-export const GET_PROJECT_FAILURE = "GET_PROJECT_FAILURE"
+import * as types from "./actionTypes";
+import axios from "axios";
+import { getItemFromLocal } from "../../utils/localStorage";
 
-export const ADD_PROJECT_REQUEST = "ADD_PROJECT_REQUEST";
-export const ADD_PROJECT_SUCCESS = "ADD_PROJECT_SUCCESS";
-export const ADD_PROJECT_FAILURE = "ADD_PROJECT_FAILURE";
+const token = getItemFromLocal("token");
+//// console.log(token);
+const headers = {
+  "Content-Type": "application/json",
+  Authorization: `Bearer ${token}`,
+};
 
-export const UPDATE_PROJECT_REQUEST = "UPDATE_PROJECT_REQUEST";
-export const UPDATE_PROJECT_SUCCESS = "UPDATE_PROJECT_SUCCESS";
-export const UPDATE_PROJECT_FAILURE = "UPDATE_PROJECT_FAILURE";
+export const getProject = (params) => (dispatch) => {
+  dispatch({ type: types.GET_PROJECT_REQUEST });
+  return axios({
+    method: "get",
+    url: `/dashboard/projects`,
+    params: params,
+    headers: headers,
+  })
+    .then((res) => {
+      ////   console.log("res",res)
+      dispatch({ type: types.GET_PROJECT_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({ type: types.GET_PROJECT_FAILURE });
+    });
+};
 
-export const DELETE_PROJECT_REQUEST = "DELETE_PROJECT_REQUEST";
-export const DELETE_PROJECT_SUCCESS = "DELETE_PROJECT_SUCCESS";
-export const DELETE_PROJECT_FAILURE = "DELETE_PROJECT_FAILURE";
+export const getSingleProject = (id) => (dispatch) => {
+  dispatch({ type: types.GET_PROJECT_REQUEST });
+  return axios({
+    method: "get",
+    url: `/dashboard/projects/${id}`,
+    headers: headers,
+  })
+    .then((res) => {
+      dispatch({ type: types.GET_PROJECT_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({ type: types.GET_PROJECT_FAILURE });
+    });
+};
+
+export const addProject = (payload) => (dispatch) => {
+  dispatch({ type: types.ADD_PROJECT_REQUEST });
+
+  return axios({
+    method: "post",
+    url: `/dashboard/projects/create`,
+    data: payload,
+    headers: headers,
+  })
+    .then((res) => {
+      return dispatch({ type: types.ADD_PROJECT_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({ type: types.ADD_PROJECT_FAILURE });
+    });
+};
+
+export const updateProject = (payload, id) => (dispatch) => {
+  dispatch({ type: types.UPDATE_PROJECT_REQUEST });
+  return axios({
+    method: "patch",
+    url: `/dashboard/projects/edit/${id}`,
+    data: payload,
+    headers: headers,
+  })
+    .then((res) => {
+      return dispatch({ type: types.UPDATE_PROJECT_SUCCESS });
+    })
+    .catch((err) => {
+      dispatch({ type: types.UPDATE_PROJECT_FAILURE });
+    });
+};
+
+export const deleteProject = (id) => (dispatch) => {
+  dispatch({ type: types.DELETE_PROJECT_REQUEST });
+
+  return axios({
+    method: "delete",
+    url: `/dashboard/projects/delete/${id}`,
+    headers: headers,
+  })
+    .then((res) => {
+      return dispatch({ type: types.DELETE_PROJECT_SUCCESS });
+    })
+    .catch((err) => {
+      dispatch({ type: types.DELETE_PROJECT_FAILURE });
+    });
+};
